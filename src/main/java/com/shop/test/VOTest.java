@@ -31,6 +31,8 @@ class VOTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		board = new BoardVO();
+		member = new MemberVO();
 		System.out.println("테스트 시작");
 	}
 
