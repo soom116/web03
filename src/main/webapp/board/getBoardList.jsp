@@ -50,12 +50,19 @@
 					<td>${vo.regdate }</td>
 				</tr>
 			</c:forEach>
+			<c:if test="${sid=='admin' }">
 				<tr>
 					<td colspan="4"><a href="${path1 }/board/addBoardForm.jsp" class="button is-success">글 등록</a></td>
-				</tr>	
+				</tr>
+			</c:if>	
 			</tbody>
 		</table>
 	</section>
+	<script>
+	$(document).ready(function(){
+		$("#lst_tb_filter").css("display","none");
+	});
+	</script>	
 </div>
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>

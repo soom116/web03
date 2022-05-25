@@ -42,7 +42,7 @@ class VOTest {
 	}
 
 	@Test
-	void test() {
+	void VOtest1() {
 		board.setTitle("제목");
 		System.out.println("데이터 : "+board.getTitle());
 		assertEquals(data1, board.getTitle());
@@ -56,5 +56,4 @@ class VOTest {
 		assertEquals(data2, member.getCid());
 		fail("VOTest2 False");
 	}
-
 }
