@@ -22,6 +22,8 @@ public class GetBoardCtrl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		int num = Integer.parseInt(request.getParameter("num"));
 		BoardDAO dao = new BoardDAO();
 		BoardVO board = new BoardVO();
@@ -32,8 +34,6 @@ public class GetBoardCtrl extends HttpServlet {
 			view.forward(request, response);
 		} else {
 			response.sendRedirect("GetBoardListCtrl");
-		}
-		
+		}	
 	}
-
 }

@@ -11,7 +11,7 @@
 		<nav class="navbar" role="navigation" aria-label="main navigation">
 		  <div class="navbar-brand">
 		    <a class="navbar-item" href="${path }/index.jsp" id="logo">
-		      <img src="${path }/img/logo1.svg" width="220" height="39">
+		      <img src="${path }/img/logo.png" width="220" height="39">
 		    </a>
 		
 		    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -20,93 +20,65 @@
 		      <span aria-hidden="true"></span>
 		    </a>
 		  </div>
-		
-		   <div id="gnb" class="navbar-menu">
+
+		  <div id="gnb" class="navbar-menu">
 		    <div class="navbar-start">
 		      <div class="navbar-item has-dropdown is-hoverable">
 		        <a class="navbar-link">
-		          신상품
+		          ALL
 		        </a>
-		
-		        <div class="navbar-dropdown">
-		          <a class="navbar-item">
-		            여성
-		          </a>
-		          <a class="navbar-item">
-		            남성
-		          </a>
-		        </div>
 		      </div>
 		      <div class="navbar-item has-dropdown is-hoverable">
 		        <a class="navbar-link">
-		          여성
+		          COUPLE
 		        </a>
-		        <div class="navbar-dropdown">
-		          <a class="navbar-item">
-		            지갑
-		          </a>
-		          <a class="navbar-item">
-		            가방
-		          </a>
-		          <a class="navbar-item">
-		            쥬얼리
-		          </a>
-		          <hr class="navbar-divider">
-		          <a class="navbar-item">
-		            의류
-		          </a>
-		          <a class="navbar-item">
-		            신발
-		          </a>
-		          <a class="navbar-item">
-		            악세서리
-		          </a>
-		          <a class="navbar-item">
-		            전체보기
-		          </a>
-		        </div>
 		      </div>
 		      <div class="navbar-item has-dropdown is-hoverable">
 		        <a class="navbar-link">
-		          남성
+		          WOMEN/MEN
 		        </a>
-		
+		      </div>
 		        <div class="navbar-dropdown">
 		          <a class="navbar-item" href="GetDiscountListCtrl">
-		            지갑
+		            MY FOREST
 		          </a>
 		          <a class="navbar-item">
-		            가방
+		            롱 슬리브
 		          </a>
 		          <a class="navbar-item">
-		            악세서리
+		            숏 슬리브
 		          </a>
 		          <a class="navbar-item">
-		            전체보기
+		            드레스
+		          </a>
+		          <a class="navbar-item">
+		            슬리브리스
+		          </a>
+		          <a class="navbar-item">
+		            로브
+		          </a>
+		          <a class="navbar-item">
+		            90,95 size
 		          </a>
 		        </div>
-		      </div>
 		      <div class="navbar-item has-dropdown is-hoverable">
 		        <a class="navbar-link">
-		          선물
+		          ACC
 		        </a>
-		
+			  </div>
 		        <div class="navbar-dropdown">
 		          <a class="navbar-item" href="GetEventListCtrl">
-		            여성용선물
+		            퍼피
 		          </a>
 		          <a class="navbar-item">
-		            남성용선물
-		          </a>
-		          <a class="navbar-item">
-		            전체보기
+		            선물포장
 		          </a>
 		        </div>
 		      </div>
 		      <div class="navbar-item has-dropdown is-hoverable">
 		        <a class="navbar-link">
 		          고객센터
-		        </a>		
+		        </a>
 		        <div class="navbar-dropdown">
 		          <a class="navbar-item" href="${path }/GetBoardListCtrl">
 		            공지사항
@@ -123,9 +95,9 @@
 		          </a>
 		        </div>
 		      </div>
-		    </div>
-			<c:if test="${empty sid }">		
-		    <div class="navbar-end">
+		     </div>
+			 <c:if test="${empty sid }">		
+		     <div class="navbar-end">
 		      <div class="navbar-item">
 		        <div class="buttons">
 		          <a href="${path }/member/agree.jsp" class="button is-primary">
@@ -137,12 +109,12 @@
 		        </div>
 		      </div>
 		     </div>
-		      </c:if>
-		      <c:if test="${!empty sid }">
-		      <!-- 로그인 사용자 -->
+		     </c:if>
+		     <c:if test="${!empty sid }">
+		     <!-- 로그인 사용자 -->
 		      <div class="navbar-item">
 		        <div class="buttons">
-		          <a href="${path }/myPageCtrl?userid=${sid }" class="button is-primary">
+		          <a href="${path }/myPageCtrl?cid=${sid }" class="button is-primary">
 		            <strong>회원정보수정</strong>
 		          </a>
 		          <a href="" class="button is-light">
@@ -164,8 +136,14 @@
 		          <a href="${path }/GetMemberListCtrl" class="button is-light">
 		            회원관리
 		          </a>
-		          <a class="button is-light">
+		          <a href="${path }/adminMemberList.jsp" class="button is-light">
+		            회원관리2
+		          </a>
+		          <a href="${path }/GetGoodsListCtrl" class="button is-light">
 		            제품관리
+		          </a>
+		          <a href="${path }/AccessListCtrl" class="button is-light">
+		            접속자관리
 		          </a>
 		          <a class="button is-light">
 		            판매관리
@@ -173,8 +151,6 @@
 		        </div>
 		      </div>
 		      </c:if>
-		    </div>
-		  </div>
-		</nav>
-	</div>
+		    </nav>
+		</div>
 </header>

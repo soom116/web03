@@ -22,6 +22,8 @@ public class GetMemberCtrl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		String cid = request.getParameter("cid");
 		MemberDAO dao = new MemberDAO();
 		MemberVO member = dao.getMember(cid);

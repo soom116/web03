@@ -13,8 +13,10 @@ public class BoardDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	
 	String sql = "";
 	int cnt = 0;
+	
 	public ArrayList<BoardVO> getBoardList() {
 		ArrayList<BoardVO> list = null;
 		try {
@@ -30,7 +32,6 @@ public class BoardDAO {
 				vo.setContent(rs.getString("content"));
 				vo.setNickname(rs.getString("nickname"));
 				vo.setRegdate(rs.getDate("regdate"));
-				vo.setVisited(rs.getInt("visited"));
 				list.add(vo);
 			}
 		} catch(ClassNotFoundException e) {
@@ -62,7 +63,6 @@ public class BoardDAO {
 				board.setContent(rs.getString("content"));
 				board.setNickname(rs.getString("nickname"));
 				board.setRegdate(rs.getDate("regdate"));
-				board.setVisited(rs.getInt("visited"));
 			}
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩이 실패되었습니다.");
@@ -101,7 +101,6 @@ public class BoardDAO {
 				board.setContent(rs.getString("content"));
 				board.setNickname(rs.getString("nickname"));
 				board.setRegdate(rs.getDate("regdate"));
-				board.setVisited(rs.getInt("visited"));
 				boardList.add(board);
 			}
 		} catch(ClassNotFoundException e) {
@@ -116,8 +115,9 @@ public class BoardDAO {
 		} finally {
 			JDBCConnection.close(rs, pstmt, conn);
 		}	
-		return boardList; 
+		return boardList;
 	}
+	
 	public int addBoard(BoardVO vo) {
 		try {
 			conn = JDBCConnection.getConnection();

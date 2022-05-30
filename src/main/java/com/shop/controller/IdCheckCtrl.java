@@ -14,9 +14,9 @@ import com.shop.model.MemberDAO;
 @WebServlet("/IdCheckCtrl")
 public class IdCheckCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	ServletContext application = null;
 	
+	ServletContext application = null;
+       
     public IdCheckCtrl() {
         super();
     }

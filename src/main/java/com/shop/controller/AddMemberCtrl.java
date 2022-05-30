@@ -22,7 +22,7 @@ public class AddMemberCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String cid = request.getParameter("cid");
 		String upw = request.getParameter("upw");
-		String uname = request.getParameter("uanme");
+		String uname = request.getParameter("uname");
 		String tel = request.getParameter("tel");
 		String email = request.getParameter("email");
 		String addr1 = request.getParameter("addr1");

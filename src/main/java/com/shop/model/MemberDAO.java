@@ -133,7 +133,6 @@ public class MemberDAO {
 		}
 		return cnt;
 	}
-	
 	public int idCheck(String uid) { //아이디 중복체크
 		try {
 			conn = JDBCConnection.getConnection();
@@ -171,15 +170,15 @@ public class MemberDAO {
 			list = new ArrayList<MemberVO>();
 			while(rs.next()) {
 				MemberVO vo = new MemberVO();
-				vo.setCid(rs.getString("userid"));
-				vo.setUpw(rs.getString("userpw"));
-				vo.setUname(rs.getString("name"));
+				vo.setCid(rs.getString("cid"));
+				vo.setUpw(rs.getString("upw"));
+				vo.setUname(rs.getString("uname"));
 				vo.setTel(rs.getString("tel"));
 				vo.setEmail(rs.getString("email"));
 				vo.setAddr1(rs.getString("addr1"));
 				vo.setAddr2(rs.getString("addr2"));
 				vo.setPostcode(rs.getString("postcode"));
-				vo.setBirth(rs.getString("birth"));			
+				vo.setBirth(rs.getString("birth"));
 				vo.setRegdate(rs.getDate("regdate"));
 				list.add(vo);
 			}
@@ -234,5 +233,42 @@ public class MemberDAO {
 			JDBCConnection.close(rs, pstmt, conn);
 		}
 		return member;
+	}
+	
+	public ArrayList<MemberVO> JSONMemberList() {  //관리자 회원목록을 JSON으로 내보내기
+		ArrayList<MemberVO> list = null;
+		try {
+			conn = JDBCConnection.getConnection();
+			sql = "select cid, upw, uname, tel, email, addr1, addr2, postcode, birth, to_char(regdate, 'yyyy-MM-dd HH24:mi:ss') as cdate from member";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<MemberVO>();
+			while(rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setCid(rs.getString("cid"));
+				vo.setUpw(rs.getString("upw"));
+				vo.setUname(rs.getString("uname"));
+				vo.setTel(rs.getString("tel"));
+				vo.setEmail(rs.getString("email"));
+				vo.setAddr1(rs.getString("addr1"));
+				vo.setAddr2(rs.getString("addr2"));
+				vo.setPostcode(rs.getString("postcode"));
+				vo.setBirth(rs.getString("birth"));
+				vo.setRegdate(rs.getDate("cdate"));
+				list.add(vo);
+			}
+		} catch(ClassNotFoundException e) {
+			System.out.println("드라이버 로딩이 실패되었습니다.");
+			e.printStackTrace();
+		} catch(SQLException e) {
+			System.out.println("SQL구문이 처리되지 못했습니다.");
+			e.printStackTrace();
+		} catch(Exception e) {
+			System.out.println("잘못된 요청으로 업무를 처리하지 못했습니다.");
+			e.printStackTrace();
+		} finally {
+			JDBCConnection.close(rs, pstmt, conn);
+		}
+		return list;
 	}
 }

@@ -28,7 +28,7 @@
 			<c:forEach items="${list }" var="vo" varStatus="status">
 				<tr>
 					<td>${status.count }</td>
-					<td><a href="${path1 }/GetMemberCtrl?userid=${vo.userid }">${vo.userid }</a></td>
+					<td><a href="${path1 }/GetMemberCtrl?cid=${vo.cid }">${vo.cid }</a></td>
 					<td>${vo.tel }</td>
 					<td>${vo.email }</td>
 					<td>${vo.regdate }</td>

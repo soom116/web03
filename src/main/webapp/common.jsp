@@ -22,6 +22,12 @@ $(document).ready( function () {
 .frm_fr { width:800px; }
 #logo img { display:block; width:180px; height:30px; min-height:30px; max-height:30px; }
 #gnb .navbar-link { font-size:18px; }
+.page_tit { font-size:40px; text-align:center; line-height:2em; padding:1em; }
+
+#form_table { width:800px; margin:20px auto; }
+#form_table input[type=text], #form_table input[type=password], #form_table textarea { min-width:500px; }
+.ft_left { float:left; padding:14px;	 }
+.ft_right { float:right; padding:14px; }
 .ft_tit { font-size:24px; font-weight:bold; padding-top:24px; }
 .ft_tel { font-size: 32px;   font-weight: 600;   color: #918c00; padding-top:12px; }
 .ft_ico_lst { clear:both; }
