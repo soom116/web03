@@ -27,7 +27,7 @@ public class myPageCtrl extends HttpServlet {
 		MemberVO member = dao.getMember(cid);
 		if(member != null) {
 			request.setAttribute("member", member);
-			RequestDispatcher view = request.getRequestDispatcher("./member/myPage.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("./member/myPage.jsp?cid="+cid);
 			view.forward(request, response);
 		} else {
 			response.sendRedirect("index.jsp");

@@ -50,13 +50,13 @@ public class GoodsDAO {
 		return list;
 	}
 	
-	public GoodsVO getGoods(int seq) {
+	public GoodsVO getGoods(int gno) {
 		GoodsVO goods = new GoodsVO();
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "select * from goods where seq=?";
+			sql = "select * from goods where gno=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, seq);
+			pstmt.setInt(1, gno);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				goods.setGno(rs.getInt("gno"));
@@ -115,16 +115,30 @@ public class GoodsDAO {
 	public int editGoods(GoodsVO vo) {
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "update goods set gtype=?, gname=?, gprice=?, gsize=?, gamount=?, gcontent=?, gimage=? where gno=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getGtype());
-			pstmt.setString(2, vo.getGname());
-			pstmt.setInt(3, vo.getGprice());
-			pstmt.setString(4, vo.getGsize());
-			pstmt.setInt(5, vo.getGamount());
-			pstmt.setString(6, vo.getGcontent());
-			pstmt.setString(7, vo.getGimg());
-			cnt = pstmt.executeUpdate();
+			if(vo.getGimg()!=null) {
+				sql = "update goods set gtype=?, gname=?, gprice=?, gsize=?, gamount=?, gcontent=?, gimg=? where gno=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, vo.getGtype());
+				pstmt.setString(2, vo.getGname());
+				pstmt.setInt(3, vo.getGprice());
+				pstmt.setString(4, vo.getGsize());
+				pstmt.setInt(5, vo.getGamount());
+				pstmt.setString(6, vo.getGcontent());
+				pstmt.setString(7, vo.getGimg());
+				pstmt.setInt(8, vo.getGno());
+				cnt = pstmt.executeUpdate();
+			} else {
+				sql = "update goods set gtype=?, gname=?, gprice=?, gsize=?, gamount=?, gcontent=? where gno=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, vo.getGtype());
+				pstmt.setString(2, vo.getGname());
+				pstmt.setInt(3, vo.getGprice());
+				pstmt.setString(4, vo.getGsize());
+				pstmt.setInt(5, vo.getGamount());
+				pstmt.setString(6, vo.getGcontent());
+				pstmt.setInt(7, vo.getGno());
+				cnt = pstmt.executeUpdate();
+			}
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩이 실패되었습니다.");
 			e.printStackTrace();

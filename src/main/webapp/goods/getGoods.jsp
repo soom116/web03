@@ -29,7 +29,7 @@
 						<th>카테고리</th>
 						<td>
 							<c:if test="${sid=='admin' }">
-							<select name="gtype" required>
+							<select name="gtype" class="select is-primary"required>
 								<option value="myforest">MY FOREST</option>
 								<option value="longsleeve">롱 슬리브</option>
 								<option value="shortsleeve">숏 슬리브</option>
@@ -47,7 +47,7 @@
 						<th>상품명</th>
 						<td>
 							<c:if test="${sid=='admin' }">
-							<input type="text" name="gname" value="${goods.gname }" required>
+							<input type="text" name="gname" value="${goods.gname }" class="input is-normal" required>
 							</c:if>
 							<c:if test="${sid!='admin' }">
 							<span>${goods.gtype }</span>
@@ -69,7 +69,7 @@
 						<th>사이즈</th>
 						<td>
 							<c:if test="${sid=='admin' }">
-							<select name="gsize">
+							<select name="gsize" class="input is-normal">
 								<option value="S">S</option>
 								<option value="M">M</option>
 								<option value="L">L</option>
@@ -109,7 +109,7 @@
 							<input type="file" accept="*.jpeg,*.jpg, *.png, *.gif" name="gimg" value="${goods.gimg }">
 							</c:if>
 							<c:if test="${sid!='admin' }">
-							<img src="${goods.gimg }" alt="${goods.gname }" />
+							<img src="${path1 }/upload/${goods.gimg }" alt="${goods.gname }" />
 							</c:if>
 						</td>
 					</tr>
@@ -120,8 +120,8 @@
 							<input type="reset" value="취소" class="button is-info"/>
 							</c:if>
 							<c:if test="${sid!='admin' }">
-							<a href="${path1 }/AddBasketCtrl?bno=${goods.bno }" class="button is-info">장바구니 담기</a>
-							<a href="${path1 }/saleForm.jsp?bno=${goods.bno }" class="button is-info">바로 구매</a>
+							<a href="${path1 }/AddBasketCtrl?gno=${goods.gno }&gsize=${goods.gsize }" class="button is-info">장바구니 담기</a>
+							<a href="${path1 }/saleForm.jsp?gno=${goods.gno }&gsize=${goods.gsize }" class="button is-info">바로 구매</a>
 							</c:if>
 							<a href="${path1 }/GetGoodsListCtrl" class="button is-info">목록</a>
 						</td>

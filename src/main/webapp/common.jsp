@@ -26,6 +26,7 @@ $(document).ready( function () {
 
 #form_table { width:800px; margin:20px auto; }
 #form_table input[type=text], #form_table input[type=password], #form_table textarea { min-width:500px; }
+#footer { clear:both; border-top:3px solid #ececec; margin-top:20px; }
 .ft_left { float:left; padding:14px;	 }
 .ft_right { float:right; padding:14px; }
 .ft_tit { font-size:24px; font-weight:bold; padding-top:24px; }

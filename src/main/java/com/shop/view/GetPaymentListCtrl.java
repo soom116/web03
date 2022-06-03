@@ -1,6 +1,7 @@
-package com.shop.controller.goods;
+package com.shop.view;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,14 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shop.common.GoodsVO;
-import com.shop.model.GoodsDAO;
+import com.shop.common.PaymentVO;
+import com.shop.model.PaymentDAO;
 
-@WebServlet("/GetGoodsCtrl")
-public class GetGoodsCtrl extends HttpServlet {
+@WebServlet("/GetPaymentListCtrl")
+public class GetPaymentListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public GetGoodsCtrl() {
+    public GetPaymentListCtrl() {
         super();
     }
 
@@ -24,17 +25,11 @@ public class GetGoodsCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		PaymentDAO dao = new PaymentDAO();
+		ArrayList<PaymentVO> list = dao.getPaymentList();
 		
-		int gno = Integer.parseInt(request.getParameter("gno"));
-		GoodsDAO dao = new GoodsDAO();
-		GoodsVO goods = new GoodsVO();
-		goods = dao.getGoods(gno);
-		if(goods != null) {
-			request.setAttribute("goods", goods);
-			RequestDispatcher view = request.getRequestDispatcher("./goods/getGoods.jsp");
-			view.forward(request, response);
-		} else {
-			response.sendRedirect("GetGoodsListCtrl");
-		}
+		request.setAttribute("list", list);;
+		RequestDispatcher view = request.getRequestDispatcher("./payment/getPaymentListCtrl");;
+		view.forward(request, response);
 	}
 }

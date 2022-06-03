@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path1" value="${pageContext.request.contextPath }" /> 
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@
 <jsp:include page="../header.jsp"></jsp:include>
 <div id="content">
 	<section class="con_wrap">
-		<h2>글 상세보기</h2>
+		<h2 class="page_tit">회원 상세보기</h2>
 		<form action="${path1 }/EditAdminMemberCtrl" method="post">
 			<table class="table" id="lst_tb">
 				<tbody>
@@ -73,7 +74,7 @@
 						<td colspan="2">
 							<input type="submit" value="수정" class="button is-info"/>
 							<input type="reset" value="취소" class="button is-info"/>
-							<a href="${path1 }/DelMemberCtrl?num=${member.userid }" class="button is-info">삭제</a>
+							<a href="${path1 }/DelMemberCtrl?num=${member.cid }" class="button is-info">삭제</a>
 							<a href="${path1 }/GetMemberListCtrl" class="button is-info">목록</a>
 						</td>
 					</tr>

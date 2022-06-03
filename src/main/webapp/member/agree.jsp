@@ -15,7 +15,7 @@
 <jsp:include page="../header.jsp"></jsp:include>
 <div id="content">
 	<section class="con_wrap">
-		<h2>회원 약관 및 개인정보처리방침</h2>
+		<h2 class="page_tit">회원 약관 및 개인정보처리방침</h2>
 		<div role="form" class="form-horizontal">
 			<textarea rows="30" cols="90" readonly>회원약관</textarea><br>
 			<input type="checkbox" name="ck1" id="ck1"> 회원약관에 동의합니다.

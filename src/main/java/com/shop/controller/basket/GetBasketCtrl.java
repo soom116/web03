@@ -1,11 +1,16 @@
 package com.shop.controller.basket;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.shop.common.BasketDetailVO;
+import com.shop.model.BasketDAO;
 
 @WebServlet("/GetBasketCtrl")
 public class GetBasketCtrl extends HttpServlet {
@@ -18,14 +23,19 @@ public class GetBasketCtrl extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//getBasketList.jsp에서 해당 상품의 장바구니번호를 전달받아 변수에 저장
-		//int bno = Integer.parseInt(request.getParameter("bno"));
-		
+		int bno = Integer.parseInt(request.getParameter("bno"));
+				
 		//BasketDAO 객체인 dao를 생성한 후 해당 메서드인 getBasket()를 호출하여 매개값 bno를 전달한 BasketVO를 받음
-		//BasketDAO dao = new BasketDAO();
-		//BasketVO basket = dao.getBasket(bno);
-		
+		BasketDAO dao = new BasketDAO();
+		BasketDetailVO bs = dao.getBasket(bno);
+				
 		//전달받은 basket을 getBasket.jsp로 전달
-		
+		if(bs != null) {
+			request.setAttribute("bs", bs);
+			RequestDispatcher view = request.getRequestDispatcher("./basket/getBasket.jsp");
+			view.forward(request, response);
+		} else {
+			response.sendRedirect("GetBasketListCtrl");
+		}
 	}
-
 }

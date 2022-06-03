@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.shop.common.BasketDetailVO;
 import com.shop.common.BasketVO;
 import com.shop.common.JDBCConnection;
 
@@ -53,7 +54,7 @@ public class BasketDAO {
 		ArrayList<BasketVO> list = null;
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "select * from basket where userid=?";
+			sql = "select * from basket where cid=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cid);
 			rs = pstmt.executeQuery();
@@ -83,21 +84,29 @@ public class BasketDAO {
 		return list;
 	}
 	
-	public BasketVO getBasket(int bno) {
-		BasketVO basket = new BasketVO();
+	public BasketDetailVO getBasket(int bno) {
+		BasketDetailVO bs = new BasketDetailVO();
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "select * from basket where bno=?";
+			sql = "select a.bno as bno, a.cid as cid, a.gno as gno, a.gsize as gsize, a.gamount as gamount, a.bdate as bdate, ";
+			sql = sql + "b.gtype as gtype, b.gname as gname, b.gprice as gprice, b.gcontent as gcontent, b.gimg as gimg from ";
+			sql = sql + "basket a inner join goods b on a.gno=b.gno where a.bno=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bno);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				basket.setBno(rs.getInt("bno"));
-				basket.setCid(rs.getString("cid"));
-				basket.setGno(rs.getInt("gno"));
-				basket.setGsize(rs.getString("gsize"));
-				basket.setGamount(rs.getInt("gamount"));
-				basket.setBdate(rs.getString("bdate"));
+				bs.setBno(rs.getInt("bno"));
+				bs.setCid(rs.getString("cid"));
+				bs.setGno(rs.getInt("gno"));
+				bs.setGsize(rs.getString("gsize"));
+				bs.setGamount(rs.getInt("gamount"));
+				bs.setBdate(rs.getString("bdate"));
+				bs.setGtype(rs.getString("gtype"));
+				bs.setGname(rs.getString("gname"));
+				bs.setGprice(rs.getInt("gprice"));
+				bs.setGcontent(rs.getString("gcontent"));
+				bs.setGimg(rs.getString("gimg"));
+				System.out.println(rs.getInt("bno")+", "+rs.getString("cid"));
 			}
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩이 실패되었습니다.");
@@ -111,7 +120,7 @@ public class BasketDAO {
 		} finally {
 			JDBCConnection.close(pstmt, conn);
 		}
-		return basket;
+		return bs;
 	}
 	
 

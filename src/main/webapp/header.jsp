@@ -27,45 +27,62 @@
 		        <a class="navbar-link">
 		          ALL
 		        </a>
+		
+		        <div class="navbar-dropdown">
+		          <a class="navbar-item">
+		            ALL
+		          </a>
+		        </div>
 		      </div>
-		      <div class="navbar-item has-dropdown is-hoverable">
+		      
+		       <div class="navbar-item has-dropdown is-hoverable">
 		        <a class="navbar-link">
 		          COUPLE
 		        </a>
+		
+		        <div class="navbar-dropdown">
+		          <a class="navbar-item" href="">
+		            COUPLE
+		          </a>
+		        </div>
 		      </div>
+		      
 		      <div class="navbar-item has-dropdown is-hoverable">
 		        <a class="navbar-link">
-		          WOMEN/MEN
+		          WOMEN / MEN
 		        </a>
-		      </div>
 		        <div class="navbar-dropdown">
-		          <a class="navbar-item" href="GetDiscountListCtrl">
+		          <a href="GetGoodsListCtrl?gtype=myforest" class="navbar-item">
 		            MY FOREST
 		          </a>
-		          <a class="navbar-item">
+		          <a href="GetGoodsListCtrl?gtype=longsleeve" class="navbar-item">
 		            롱 슬리브
 		          </a>
-		          <a class="navbar-item">
+		          <a href="GetGoodsListCtrl?gtype=shortsleeve" class="navbar-item">
 		            숏 슬리브
 		          </a>
-		          <a class="navbar-item">
+		          <hr class="navbar-divider">
+		          <a href="GetGoodsListCtrl?gtype=dress" class="navbar-item">
 		            드레스
 		          </a>
-		          <a class="navbar-item">
+		          <a href="GetGoodsListCtrl?gtype=sleeveless" class="navbar-item">
 		            슬리브리스
 		          </a>
-		          <a class="navbar-item">
+		          <a href="GetGoodsListCtrl?gtype=robe" class="navbar-item">
 		            로브
 		          </a>
-		          <a class="navbar-item">
+		          <a href="GetGoodsListCtrl?gtype=bigsize" class="navbar-item">
 		            90,95 size
 		          </a>
 		        </div>
+		      </div>
+		      
+		     
 		      <div class="navbar-item has-dropdown is-hoverable">
 		        <a class="navbar-link">
 		          ACC
 		        </a>
-			  </div>
+		
 		        <div class="navbar-dropdown">
 		          <a class="navbar-item" href="GetEventListCtrl">
 		            퍼피
@@ -78,14 +95,16 @@
 		      <div class="navbar-item has-dropdown is-hoverable">
 		        <a class="navbar-link">
 		          고객센터
-		        </a>
+		        </a>		
 		        <div class="navbar-dropdown">
 		          <a class="navbar-item" href="${path }/GetBoardListCtrl">
 		            공지사항
 		          </a>
-		          <a class="navbar-item">
-		            1:1 문의
-		          </a>
+			      <c:if test="${!empty sid }">
+			          <a href="${path }/mailForm.jsp" class="navbar-item">
+			            1:1 문의
+			          </a>
+			      </c:if>    
 		          <a class="navbar-item">
 		            자주하는 질문 및 답변
 		          </a>
@@ -117,7 +136,10 @@
 		          <a href="${path }/myPageCtrl?cid=${sid }" class="button is-primary">
 		            <strong>회원정보수정</strong>
 		          </a>
-		          <a href="" class="button is-light">
+		          <a href="${path }/GetBasketListCtrl" class="button is-light">
+		            장바구니
+		          </a>
+		          <a href="${path }/myPageCtrl" class="button is-light">
 		            마이페이지
 		          </a>
 		          <a href="${path }/logOutCtrl" class="button is-light">
@@ -136,9 +158,9 @@
 		          <a href="${path }/GetMemberListCtrl" class="button is-light">
 		            회원관리
 		          </a>
-		          <a href="${path }/adminMemberList.jsp" class="button is-light">
+<!-- 		          <a href="${path }/adminMemberList.jsp" class="button is-light">
 		            회원관리2
-		          </a>
+		          </a>-->
 		          <a href="${path }/GetGoodsListCtrl" class="button is-light">
 		            제품관리
 		          </a>

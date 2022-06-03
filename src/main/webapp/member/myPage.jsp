@@ -15,32 +15,38 @@
 <jsp:include page="../header.jsp"></jsp:include>
 <div id="content">
 	<section class="con_wrap">
-		<h2>글 상세보기</h2>
+		<h2 class="page_tit">회원 정보 상세보기</h2>
 		<form action="${path1 }/EditMemberCtrl" method="post">
 			<table class="table" id="lst_tb">
 				<tbody>
 					<tr>
 						<th>아이디</th>
 						<td>
-							<input type="text" name="userid" value="${member.userid }" readonly>
+							<input type="text" name="cid" value="${member.cid }" readonly>
 						</td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
 						<td>
-							<input type="password" name="userpw" value="${member.userpw }">
+							<input type="password" name="upw" value="${member.upw }">
 						</td>
 					</tr>
 					<tr>
-						<th>이메일</th>
+						<th>이름</th>
 						<td>
-							<input type="text" name="email" value="${member.email }">
+							<input type="text" name="uname" value="${member.uname }">
 						</td>
 					</tr>
 					<tr>
 						<th>전화번호</th>
 						<td>
 							<input type="tel" name="tel" value="${member.tel }">
+						</td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td>
+							<input type="text" name="email" value="${member.email }">
 						</td>
 					</tr>
 					<tr>
@@ -52,34 +58,22 @@
 						</td>
 					</tr>
 					<tr>
-						<th>가입일</th>
-						<td>
-							${member.regdate }
-						</td>
-					</tr>
-					<tr>
 						<th>생년월일</th>
 						<td>
 							<input type="date" name="birth" value="${member.birth }">
 						</td>
 					</tr>
 					<tr>
-						<th>포인트</th>
+						<th>가입일</th>
 						<td>
-							${member.userpoint }
-						</td>
-					</tr>
-					<tr>
-						<th>방문횟수</th>
-						<td>
-							${member.visited }
+							${member.regdate }
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<input type="submit" value="수정" class="button is-info"/>
 							<input type="reset" value="취소" class="button is-info"/>
-							<a href="${path1 }/DelMemberCtrl?uid=${member.userid }" class="button is-info">탈퇴</a>
+							<a href="${path1 }/DelMemberCtrl?uid=${member.cid }" class="button is-info">탈퇴</a>
 							<a href="${path1 }/GetMemberListCtrl" class="button is-info">목록</a>
 						</td>
 					</tr>

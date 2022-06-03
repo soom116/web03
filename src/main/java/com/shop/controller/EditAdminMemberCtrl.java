@@ -1,7 +1,6 @@
 package com.shop.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,13 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.shop.common.MemberVO;
 import com.shop.model.MemberDAO;
 
-@WebServlet("/EditMemberCtrl")
-public class EditMemberCtrl extends HttpServlet {
+@WebServlet("/EditAdminMemberCtrl")
+public class EditAdminMemberCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public EditMemberCtrl() {
+    public EditAdminMemberCtrl() {
         super();
-
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,9 +42,10 @@ public class EditMemberCtrl extends HttpServlet {
 		vo.setBirth(birth);
 		int cnt = dao.editMember(vo);
 		if(cnt>0) {  //회원정보수정 성공
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("GetMemberListCtrl");
 		} else {  //회원정보수정 실패
-			response.sendRedirect("./member/myPage.jsp?cid="+cid);
+			response.sendRedirect("./member/myPage.jsp");
 		}	
 	}
+
 }

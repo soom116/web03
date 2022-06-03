@@ -11,14 +11,15 @@
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
-<%-- <c:if test="${empty name }"><c:redirect url="../member/login.jsp" /></c:if> --%>
 <div id="content" class="content_wrap">
+	<h2 class="page_tit">회원 목록 보기</h2>
 	<section class="con_wrap">
 		<table class="table" id="lst_tb">
 			<thead>
 				<tr>
 					<th class="item1">번호</th>
 					<th class="item2">아이디</th>
+					<th class="item2">이름</th>
 					<th class="item3">전화번호</th>
 					<th class="item4">이메일</th>
 					<th class="item5">가입일</th>
@@ -29,6 +30,7 @@
 				<tr>
 					<td>${status.count }</td>
 					<td><a href="${path1 }/GetMemberCtrl?cid=${vo.cid }">${vo.cid }</a></td>
+					<td>${vo.uname }</td>
 					<td>${vo.tel }</td>
 					<td>${vo.email }</td>
 					<td>${vo.regdate }</td>

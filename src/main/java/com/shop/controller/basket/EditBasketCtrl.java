@@ -22,7 +22,6 @@ public class EditBasketCtrl extends HttpServlet {
 		//BasketVO의 객체 vo를 생성하여 bno, gno, gcolor, amount, gsize를 vo에 저장
 		
 		//BasketDAO의 객체 dao를 생성하여 addBasket()을 호출하면서 vo를 전달한 후 cnt를 결과로 받음 
-		//int cnt = dao.editBasket(vo)
 		
 		//이동할 주소 지정 -> response.sendRedirect("");
 	}
